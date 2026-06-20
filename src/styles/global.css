@@ -234,6 +234,23 @@ select.form-input option { background: #111; color: #fff; }
 /* Counter numbers */
 .counter { font-family: 'Playfair Display', serif; }
 
+/* ─── Hero: mobile collapses right panel ─── */
+@media (max-width: 1023px) {
+  .hero-right-panel { display: none !important; }
+  #home .flex { max-width: 100% !important; }
+}
+
+/* ─── Newspaper columns: collapse on mobile ─── */
+@media (max-width: 640px) {
+  .newspaper-cols { column-count: 1 !important; }
+}
+
+/* ─── Accordion icon transition ─── */
+.accordion-icon { transition: transform 0.4s ease; }
+
+/* ─── Accordion item first gold top border ─── */
+#accordion { border-top: 1px solid var(--border-subtle); }
+
 /* Nav link */
 .nav-link {
   font-family: 'Inter', sans-serif;

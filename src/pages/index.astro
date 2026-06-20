@@ -16,24 +16,25 @@ import '../styles/global.css';
 </head>
 <body style="background:#0A0A0A;">
 
+<!-- Fixed left editorial line -->
+<div id="editorial-line" style="
+  position:fixed;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,transparent,rgba(201,151,43,0.2),transparent);
+  z-index:100;pointer-events:none;
+"></div>
+
+
 <!-- ═══════════════════════════════════════════════
      NAVIGATION
 ═══════════════════════════════════════════════ -->
-<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 px-6 lg:px-16 py-5 border-b border-transparent">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-
-    <!-- Logo -->
-    <a href="#home" class="flex flex-col leading-none no-underline group">
-      <span class="font-playfair text-2xl font-bold tracking-widest" style="color:var(--gold);line-height:1">
-        STERLING
-        <span class="font-playfair italic font-normal text-lg opacity-70" style="color:var(--gold-light);">&nbsp;&amp;&nbsp;</span>
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 px-8 lg:px-16 py-5 border-b border-transparent">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+    <a href="#home" class="flex flex-col leading-none no-underline">
+      <span class="font-playfair text-2xl font-bold tracking-widest" style="color:var(--gold);line-height:1;">
+        STERLING<span class="font-playfair italic font-normal text-lg opacity-70" style="color:var(--gold-light);">&nbsp;&amp;&nbsp;</span>
       </span>
-      <span class="font-inter text-white tracking-[0.3em] text-[0.52rem] font-medium uppercase" style="letter-spacing:0.3em">
-        ASSOCIATES
-      </span>
+      <span class="font-inter text-white text-[0.52rem] font-medium uppercase" style="letter-spacing:0.3em;">ASSOCIATES</span>
     </a>
-
-    <!-- Desktop Nav -->
     <div class="hidden lg:flex items-center gap-10">
       <a href="#practice" class="nav-link">Practice Areas</a>
       <a href="#about" class="nav-link">About</a>
@@ -42,169 +43,191 @@ import '../styles/global.css';
       <a href="#contact" class="nav-link">Contact</a>
       <a href="#contact" class="btn-outline" style="padding:0.7rem 1.4rem;font-size:0.58rem;">Book Consultation</a>
     </div>
-
-    <!-- Hamburger -->
     <button id="menu-toggle" class="lg:hidden flex flex-col gap-1.5 p-2 z-50 relative" aria-label="Open menu">
-      <span class="hamburger-line block w-6 h-px transition-all duration-300" style="background:var(--gold)"></span>
-      <span class="hamburger-line block w-6 h-px transition-all duration-300" style="background:var(--gold)"></span>
-      <span class="hamburger-line block w-4 h-px transition-all duration-300 self-end" style="background:var(--gold)"></span>
+      <span class="block w-6 h-px transition-all duration-300" style="background:var(--gold)"></span>
+      <span class="block w-6 h-px transition-all duration-300" style="background:var(--gold)"></span>
+      <span class="block w-4 h-px transition-all duration-300 self-end" style="background:var(--gold)"></span>
     </button>
   </div>
 </nav>
 
-<!-- Mobile Menu Overlay -->
+<!-- Mobile Menu -->
 <div id="mobile-menu" class="fixed inset-0 z-40 flex flex-col items-center justify-center" style="background:#050505;">
-  <button id="menu-close" class="absolute top-6 right-6 p-2" style="color:var(--gold);font-size:1.5rem;" aria-label="Close menu">✕</button>
+  <button id="menu-close" class="absolute top-6 right-6 p-2 text-2xl" style="color:var(--gold);" aria-label="Close">✕</button>
   <nav class="flex flex-col items-center gap-8">
-    <a href="#practice" class="mobile-nav-link font-playfair text-4xl font-normal text-white hover:text-yellow-400 transition-colors duration-300">Practice Areas</a>
-    <a href="#about" class="mobile-nav-link font-playfair text-4xl font-normal text-white hover:text-yellow-400 transition-colors duration-300">About</a>
-    <a href="#team" class="mobile-nav-link font-playfair text-4xl font-normal text-white hover:text-yellow-400 transition-colors duration-300">Team</a>
-    <a href="#results" class="mobile-nav-link font-playfair text-4xl font-normal text-white hover:text-yellow-400 transition-colors duration-300">Results</a>
-    <a href="#contact" class="mobile-nav-link font-playfair text-4xl font-normal text-white hover:text-yellow-400 transition-colors duration-300">Contact</a>
+    <a href="#practice" class="mobile-nav-link font-playfair text-4xl text-white hover:text-yellow-400 transition-colors duration-300">Practice Areas</a>
+    <a href="#about"    class="mobile-nav-link font-playfair text-4xl text-white hover:text-yellow-400 transition-colors duration-300">About</a>
+    <a href="#team"     class="mobile-nav-link font-playfair text-4xl text-white hover:text-yellow-400 transition-colors duration-300">Team</a>
+    <a href="#results"  class="mobile-nav-link font-playfair text-4xl text-white hover:text-yellow-400 transition-colors duration-300">Results</a>
+    <a href="#contact"  class="mobile-nav-link font-playfair text-4xl text-white hover:text-yellow-400 transition-colors duration-300">Contact</a>
     <a href="#contact" class="btn-gold mt-4">Book Consultation</a>
   </nav>
 </div>
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 1 — HERO
+     HERO — SPLIT DIAGONAL
 ═══════════════════════════════════════════════ -->
-<section id="home" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden" style="background:#0A0A0A;">
-  <!-- Marble overlay -->
-  <div class="hero-marble-overlay"></div>
-  <!-- Particle canvas -->
-  <canvas id="particle-canvas" class="absolute inset-0 pointer-events-none"></canvas>
+<section id="home" class="relative min-h-screen overflow-hidden" style="background:#0A0A0A;">
+  <canvas id="particle-canvas" class="absolute inset-0 pointer-events-none" style="z-index:1;"></canvas>
 
-  <!-- Content -->
-  <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-    <!-- Established label -->
+  <!-- Diagonal clip right panel -->
+  <div class="hero-right-panel" style="
+    position:absolute;top:0;right:0;
+    width:42%;height:100%;
+    background:#141414;
+    clip-path:polygon(12% 0,100% 0,100% 100%,0% 100%);
+    border-left:none;z-index:2;
+  ">
+    <!-- Gold corner accents -->
+    <div style="position:absolute;top:10%;right:8%;width:32px;height:32px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+    <div style="position:absolute;top:10%;right:calc(8% + 32px + 40%);width:32px;height:32px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);opacity:.4;"></div>
+    <div style="position:absolute;bottom:14%;right:8%;width:32px;height:32px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+    <div style="position:absolute;bottom:14%;right:calc(8% + 32px + 40%);width:32px;height:32px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);opacity:.4;"></div>
+    <!-- Placeholder -->
+    <div class="absolute inset-0 flex items-center justify-center" style="padding:18% 12% 18% 20%;">
+      <div class="text-center">
+        <div class="font-playfair italic text-xl mb-2" style="color:var(--gold);">[Firm Image]</div>
+        <div class="font-inter text-xs tracking-widest uppercase" style="color:#444;">Sterling &amp; Associates · Sandton</div>
+      </div>
+    </div>
+    <!-- Subtle gold right border line on panel -->
+    <div style="position:absolute;top:10%;right:6%;bottom:10%;width:1px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);opacity:0.3;"></div>
+  </div>
+
+  <!-- Left text block -->
+  <div class="relative flex flex-col justify-center min-h-screen pl-8 lg:pl-20 pr-8 lg:pr-0" style="max-width:62%;z-index:3;padding-top:6rem;padding-bottom:8rem;">
     <p class="section-label mb-6 fade-up">Established 1987</p>
-    <!-- Gold line -->
-    <div class="mx-auto mb-10 fade-up delay-1" style="width:60px;height:1px;background:var(--gold);"></div>
-
-    <!-- Main heading -->
-    <h1 class="font-playfair fade-up delay-1" style="line-height:1.1;">
-      <span class="block text-white" style="font-size:clamp(3rem,7vw,5.5rem);font-weight:700;">When the Stakes</span>
-      <span class="block font-playfair italic" style="font-size:clamp(3.2rem,8vw,6rem);font-weight:600;color:var(--gold);">Are Highest</span>
+    <div class="mb-8 fade-up delay-1" style="width:60px;height:1px;background:var(--gold);"></div>
+    <h1 class="font-playfair fade-up delay-1" style="line-height:1.08;">
+      <span class="block text-white" style="font-size:clamp(2.8rem,6vw,5.2rem);font-weight:700;">When the Stakes</span>
+      <span class="block font-playfair italic" style="font-size:clamp(3rem,7vw,5.8rem);font-weight:600;color:var(--gold);">Are Highest</span>
     </h1>
-
-    <!-- Subheading -->
-    <p class="font-inter mt-8 mb-10 mx-auto fade-up delay-2" style="color:#AAAAAA;font-size:1.05rem;line-height:1.8;max-width:600px;font-weight:300;">
+    <p class="font-inter mt-7 mb-10 fade-up delay-2" style="color:#AAAAAA;font-size:1rem;line-height:1.85;max-width:480px;font-weight:300;">
       Sterling &amp; Associates has represented South Africa's most discerning individuals and corporations for over three decades. Trusted. Precise. Uncompromising.
     </p>
-
-    <!-- CTA Buttons -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 fade-up delay-3">
+    <div class="flex flex-wrap gap-4 fade-up delay-3">
       <a href="#contact" class="btn-gold">Request Consultation</a>
       <a href="#practice" class="btn-outline">Our Practice Areas</a>
     </div>
-
-    <!-- Stats -->
-    <div class="flex items-center justify-center gap-8 sm:gap-12 fade-up delay-4">
-      <div class="text-center">
-        <div class="font-playfair text-5xl font-bold counter" data-target="37" style="color:var(--gold);">0</div>
-        <div class="font-inter text-xs tracking-widest uppercase text-white opacity-60 mt-2">Years</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="text-center">
-        <div class="font-playfair text-5xl font-bold" style="color:var(--gold);">1,200+</div>
-        <div class="font-inter text-xs tracking-widest uppercase text-white opacity-60 mt-2">Cases</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="text-center">
-        <div class="font-playfair text-5xl font-bold counter" data-target="98" data-suffix="%" style="color:var(--gold);">0%</div>
-        <div class="font-inter text-xs tracking-widest uppercase text-white opacity-60 mt-2">Success Rate</div>
-      </div>
-    </div>
   </div>
 
-  <!-- Scroll Indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 scroll-indicator opacity-40">
-    <svg width="20" height="32" viewBox="0 0 20 32" fill="none">
-      <rect x="1" y="1" width="18" height="30" rx="9" stroke="#C9972B" stroke-width="1.5"/>
-      <circle cx="10" cy="8" r="2.5" fill="#C9972B"/>
-    </svg>
+  <!-- Stats strip pinned to bottom, full width -->
+  <div class="absolute bottom-0 left-0 right-0 z-10 fade-up delay-4" style="border-top:1px solid var(--gold);background:rgba(10,10,10,0.95);backdrop-filter:blur(8px);">
+    <div class="max-w-screen-xl mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-around py-5 px-8 gap-6 sm:gap-0">
+      <div class="text-center">
+        <div class="font-playfair text-4xl font-bold counter" data-target="37" style="color:var(--gold);">0</div>
+        <div class="font-inter text-xs tracking-widest uppercase mt-1" style="color:#888;">Years</div>
+      </div>
+      <div class="stat-divider hidden sm:block"></div>
+      <div class="text-center">
+        <div class="font-playfair text-4xl font-bold" style="color:var(--gold);">1,200+</div>
+        <div class="font-inter text-xs tracking-widest uppercase mt-1" style="color:#888;">Cases</div>
+      </div>
+      <div class="stat-divider hidden sm:block"></div>
+      <div class="text-center">
+        <div class="font-playfair text-4xl font-bold counter" data-target="98" data-suffix="%" style="color:var(--gold);">0</div>
+        <div class="font-inter text-xs tracking-widest uppercase mt-1" style="color:#888;">Success Rate</div>
+      </div>
+      <div class="stat-divider hidden sm:block"></div>
+      <div class="text-center">
+        <div class="font-playfair text-4xl font-bold" style="color:var(--gold);">R12B+</div>
+        <div class="font-inter text-xs tracking-widest uppercase mt-1" style="color:#888;">Assets Protected</div>
+      </div>
+    </div>
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 2 — GOLD BAR
+     GOLD BAR
 ═══════════════════════════════════════════════ -->
-<div style="background:var(--gold);padding:1.2rem 2rem;text-align:center;">
-  <p class="font-inter text-black font-semibold tracking-[0.25em] uppercase" style="font-size:0.62rem;letter-spacing:0.25em;">
+<div style="background:var(--gold);padding:1.15rem 2rem;text-align:center;">
+  <p class="font-inter font-semibold text-black tracking-[0.25em] uppercase" style="font-size:0.62rem;">
     Proudly Serving Johannesburg's Leading Corporations and Individuals Since 1987
   </p>
 </div>
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 3 — ABOUT
+     ABOUT — TYPOGRAPHIC / NEWSPAPER
 ═══════════════════════════════════════════════ -->
-<section id="about" style="background:var(--bg-secondary);padding:6rem 1.5rem;">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+<section id="about" style="background:var(--bg-secondary);padding:6rem 2rem 0;">
+  <div class="max-w-screen-xl mx-auto">
+    <span class="section-label fade-up">About the Firm</span>
 
-      <!-- Left: Text -->
-      <div>
-        <span class="section-label fade-up">About the Firm</span>
-        <h2 class="font-playfair text-white fade-up delay-1" style="font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.2;margin-bottom:0.5rem;">
-          Three Decades of Trusted Legal Excellence
-        </h2>
-        <span class="gold-underline fade-up delay-1" style="margin-left:0;"></span>
+    <!-- Massive heading -->
+    <h2 class="font-playfair text-white fade-up delay-1" style="
+      font-size:clamp(2.6rem,7vw,4.8rem);
+      font-weight:800;
+      line-height:1.08;
+      margin-top:1rem;
+      margin-bottom:2.5rem;
+      max-width:100%;
+    ">
+      Three Decades<br/>
+      of Trusted<br/>
+      <span class="font-playfair italic" style="color:var(--gold);">Legal Excellence</span>
+    </h2>
+    <span class="gold-underline fade-up delay-1" style="margin-left:0;margin-bottom:3rem;"></span>
 
-        <div class="font-inter mt-8 space-y-5 fade-up delay-2" style="color:#BBBBBB;font-size:0.95rem;line-height:1.85;font-weight:300;">
-          <p>Sterling &amp; Associates was founded in 1987 by Senior Partner Jonathan Sterling, a Rhodes Scholar and former judge's clerk who believed that South Africa's corporate elite deserved legal representation without compromise.</p>
-          <p>From our founding offices in the heart of Sandton, we have grown to become one of Johannesburg's most respected law firms — trusted by JSE-listed companies, multinational corporations, high-net-worth individuals and family offices across Southern Africa.</p>
-          <p>Our reputation is built not on volume but on precision. We accept only the cases we can win and give every client the full weight of our collective expertise.</p>
+    <!-- Newspaper two-column body -->
+    <div class="newspaper-cols fade-up delay-2" style="
+      column-count:2;
+      column-gap:3.5rem;
+      column-rule:1px solid var(--border-subtle);
+      color:#BBBBBB;
+      font-size:0.95rem;
+      line-height:1.9;
+      font-weight:300;
+      max-width:900px;
+      margin-bottom:4rem;
+      font-family:'Inter',sans-serif;
+    ">
+      <p style="margin-bottom:1.2rem;">
+        Sterling &amp; Associates was founded in 1987 by Senior Partner Jonathan Sterling, a Rhodes Scholar and former judge's clerk who believed that South Africa's corporate elite deserved legal representation without compromise.
+      </p>
+      <p style="margin-bottom:1.2rem;">
+        From our founding offices in the heart of Sandton, we have grown to become one of Johannesburg's most respected law firms — trusted by JSE-listed companies, multinational corporations, high-net-worth individuals and family offices across Southern Africa.
+      </p>
+      <p>
+        Our reputation is built not on volume but on precision. We accept only the cases we can win and give every client the full weight of our collective expertise.
+      </p>
+    </div>
+  </div>
+
+  <!-- Stats ticker bar — full width dark -->
+  <div style="background:#0D0D0D;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);">
+    <div class="max-w-screen-xl mx-auto fade-up delay-3">
+      <div class="flex flex-col sm:flex-row items-stretch">
+        <div class="flex-1 text-center py-8 px-6" style="border-right:1px solid var(--gold);opacity:.4; border-right-opacity:1;">
+          <div class="font-playfair text-3xl font-bold" style="color:var(--gold);">37 Years</div>
+          <div class="font-inter text-xs tracking-widest uppercase mt-2" style="color:#666;">Serving Johannesburg</div>
         </div>
-
-        <!-- Gold rule -->
-        <div class="my-8 fade-up delay-3"><hr class="gold-rule" /></div>
-
-        <!-- Stat boxes -->
-        <div class="grid grid-cols-2 gap-4 fade-up delay-3">
-          <div style="border:1px solid rgba(201,151,43,0.35);padding:1.5rem 1.25rem;">
-            <div class="font-playfair text-2xl font-bold" style="color:var(--gold);">37 Years</div>
-            <div class="font-inter text-xs mt-1 tracking-wide uppercase" style="color:#888;">Serving Johannesburg</div>
-          </div>
-          <div style="border:1px solid rgba(201,151,43,0.35);padding:1.5rem 1.25rem;">
-            <div class="font-playfair text-2xl font-bold" style="color:var(--gold);">R12 Billion+</div>
-            <div class="font-inter text-xs mt-1 tracking-wide uppercase" style="color:#888;">In Client Assets Protected</div>
-          </div>
+        <div class="flex-1 text-center py-8 px-6" style="border-right:1px solid rgba(201,151,43,0.3);">
+          <div class="font-playfair text-3xl font-bold" style="color:var(--gold);">R12 Billion+</div>
+          <div class="font-inter text-xs tracking-widest uppercase mt-2" style="color:#666;">In Client Assets Protected</div>
+        </div>
+        <div class="flex-1 text-center py-8 px-6" style="border-right:1px solid rgba(201,151,43,0.3);">
+          <div class="font-playfair text-3xl font-bold" style="color:var(--gold);">1,200+</div>
+          <div class="font-inter text-xs tracking-widest uppercase mt-2" style="color:#666;">Cases Handled</div>
+        </div>
+        <div class="flex-1 text-center py-8 px-6">
+          <div class="font-playfair text-3xl font-bold" style="color:var(--gold);">98%</div>
+          <div class="font-inter text-xs tracking-widest uppercase mt-2" style="color:#666;">Success Rate</div>
         </div>
       </div>
-
-      <!-- Right: Image Frame -->
-      <div class="flex items-center justify-center fade-up delay-2">
-        <div class="relative" style="width:100%;max-width:400px;aspect-ratio:3/4;">
-          <!-- Corner accents -->
-          <div class="absolute top-0 left-0 w-6 h-6" style="border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
-          <div class="absolute top-0 right-0 w-6 h-6" style="border-top:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
-          <div class="absolute bottom-0 left-0 w-6 h-6" style="border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
-          <div class="absolute bottom-0 right-0 w-6 h-6" style="border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
-          <!-- Inner frame -->
-          <div class="absolute inset-3 flex items-center justify-center" style="background:#141414;border:1px solid var(--border-subtle);">
-            <div class="text-center px-6">
-              <div class="font-playfair italic text-2xl mb-3" style="color:var(--gold);">[Firm Image]</div>
-              <div class="font-inter text-xs tracking-widest uppercase" style="color:#555;">Sterling & Associates</div>
-              <div class="font-inter text-xs mt-1" style="color:#444;">Sandton, Johannesburg</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 4 — PRACTICE AREAS
+     PRACTICE AREAS — ACCORDION
 ═══════════════════════════════════════════════ -->
-<section id="practice" style="background:var(--bg-primary);padding:6rem 1.5rem;">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16">
+<section id="practice" style="background:var(--bg-primary);padding:6rem 2rem;">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="text-center mb-14">
       <span class="section-label fade-up">Practice Areas</span>
       <h2 class="font-playfair text-white fade-up delay-1" style="font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.2;">
         Comprehensive Legal Excellence
@@ -215,81 +238,104 @@ import '../styles/global.css';
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px" style="background:var(--border-subtle);">
-
-      <!-- Card 1 -->
-      <div class="practice-card fade-up delay-1">
-        <div class="font-playfair text-3xl font-light mb-4" style="color:var(--gold);opacity:0.6;">I</div>
-        <h3 class="font-playfair text-white text-xl font-semibold mb-3">Corporate &amp; Commercial Law</h3>
-        <p class="font-inter text-sm leading-relaxed" style="color:#888;font-weight:300;">Mergers and acquisitions, corporate restructuring, shareholder agreements and commercial contracts for JSE-listed companies and private corporations.</p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="practice-card fade-up delay-2">
-        <div class="font-playfair text-3xl font-light mb-4" style="color:var(--gold);opacity:0.6;">II</div>
-        <h3 class="font-playfair text-white text-xl font-semibold mb-3">Dispute Resolution &amp; Litigation</h3>
-        <p class="font-inter text-sm leading-relaxed" style="color:#888;font-weight:300;">Complex commercial litigation, arbitration and mediation across South Africa's high courts. We have an unparalleled record in Johannesburg's Commercial Court.</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="practice-card fade-up delay-3">
-        <div class="font-playfair text-3xl font-light mb-4" style="color:var(--gold);opacity:0.6;">III</div>
-        <h3 class="font-playfair text-white text-xl font-semibold mb-3">Property &amp; Conveyancing</h3>
-        <p class="font-inter text-sm leading-relaxed" style="color:#888;font-weight:300;">High-value property transactions, commercial real estate acquisitions, development agreements and conveyancing for Sandton's most significant property portfolios.</p>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="practice-card fade-up delay-1">
-        <div class="font-playfair text-3xl font-light mb-4" style="color:var(--gold);opacity:0.6;">IV</div>
-        <h3 class="font-playfair text-white text-xl font-semibold mb-3">Employment &amp; Labour Law</h3>
-        <p class="font-inter text-sm leading-relaxed" style="color:#888;font-weight:300;">Executive employment contracts, restraint of trade disputes, CCMA representation and workforce restructuring for South Africa's leading employers.</p>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="practice-card fade-up delay-2">
-        <div class="font-playfair text-3xl font-light mb-4" style="color:var(--gold);opacity:0.6;">V</div>
-        <h3 class="font-playfair text-white text-xl font-semibold mb-3">Estate Planning &amp; Trusts</h3>
-        <p class="font-inter text-sm leading-relaxed" style="color:#888;font-weight:300;">Wills, trusts, estate administration and succession planning for high-net-worth individuals and multi-generational family wealth structures.</p>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="practice-card fade-up delay-3">
-        <div class="font-playfair text-3xl font-light mb-4" style="color:var(--gold);opacity:0.6;">VI</div>
-        <h3 class="font-playfair text-white text-xl font-semibold mb-3">Tax Law &amp; Advisory</h3>
-        <p class="font-inter text-sm leading-relaxed" style="color:#888;font-weight:300;">Corporate tax structuring, SARS disputes, international tax planning and VAT advisory for businesses operating across South Africa and Sub-Saharan Africa.</p>
-      </div>
-
+    <!-- Accordion list -->
+    <div id="accordion" class="fade-up delay-2">
+      {[
+        {
+          num:'I',
+          title:'Corporate & Commercial Law',
+          body:'Mergers and acquisitions, corporate restructuring, shareholder agreements and commercial contracts for JSE-listed companies and private corporations.'
+        },
+        {
+          num:'II',
+          title:'Dispute Resolution & Litigation',
+          body:'Complex commercial litigation, arbitration and mediation across South Africa\'s high courts. We have an unparalleled record in Johannesburg\'s Commercial Court.'
+        },
+        {
+          num:'III',
+          title:'Property & Conveyancing',
+          body:'High-value property transactions, commercial real estate acquisitions, development agreements and conveyancing for Sandton\'s most significant property portfolios.'
+        },
+        {
+          num:'IV',
+          title:'Employment & Labour Law',
+          body:'Executive employment contracts, restraint of trade disputes, CCMA representation and workforce restructuring for South Africa\'s leading employers.'
+        },
+        {
+          num:'V',
+          title:'Estate Planning & Trusts',
+          body:'Wills, trusts, estate administration and succession planning for high-net-worth individuals and multi-generational family wealth structures.'
+        },
+        {
+          num:'VI',
+          title:'Tax Law & Advisory',
+          body:'Corporate tax structuring, SARS disputes, international tax planning and VAT advisory for businesses operating across South Africa and Sub-Saharan Africa.'
+        }
+      ].map((item, i) => (
+        <div class="accordion-item" data-index={i} style="border-bottom:1px solid var(--border-subtle);">
+          <button
+            class="accordion-trigger w-full flex items-center justify-between py-6 px-2 group"
+            aria-expanded="false"
+            style="background:transparent;border:none;cursor:pointer;text-align:left;"
+          >
+            <span class="font-playfair text-xl font-light w-12 shrink-0" style="color:var(--gold);opacity:0.55;">{item.num}</span>
+            <span class="font-playfair text-white text-xl font-semibold flex-1 mx-6 group-hover:text-yellow-400 transition-colors duration-300">{item.title}</span>
+            <span class="accordion-icon font-inter text-2xl font-thin transition-transform duration-400 shrink-0" style="color:var(--gold);line-height:1;">+</span>
+          </button>
+          <div class="accordion-body overflow-hidden" style="max-height:0;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1);">
+            <div style="padding:0 2rem 1.75rem 3.5rem;border-left:2px solid var(--gold);margin:0 0.5rem 1.5rem 3rem;">
+              <p class="font-inter text-sm leading-relaxed" style="color:#888;font-weight:300;">{item.body}</p>
+            </div>
+          </div>
+          <!-- Thin gold line top on first item -->
+          {i === 0 && <div style="position:absolute;top:0;left:0;right:0;height:1px;background:rgba(201,151,43,0.3);"></div>}
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 5 — MARBLE QUOTE
+     MARBLE QUOTE — FULL VIEWPORT
 ═══════════════════════════════════════════════ -->
-<section class="marble-bg" style="padding:7rem 1.5rem;">
-  <div class="max-w-3xl mx-auto text-center fade-up">
-    <!-- Large quote mark -->
-    <div class="font-playfair leading-none mb-6" style="font-size:8rem;color:var(--gold);opacity:0.35;line-height:0.7;">&ldquo;</div>
-    <blockquote class="font-playfair italic" style="font-size:clamp(1.3rem,2.5vw,1.75rem);color:#2A2520;line-height:1.65;font-weight:400;">
+<section class="marble-bg relative" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem;">
+  <!-- Massive watermark quote mark -->
+  <div aria-hidden="true" style="
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-55%,-60%);
+    font-family:'Playfair Display',serif;
+    font-size:400px;
+    line-height:1;
+    color:var(--gold);
+    opacity:0.08;
+    pointer-events:none;
+    user-select:none;
+    z-index:0;
+  ">&ldquo;</div>
+
+  <div class="relative max-w-4xl mx-auto fade-up" style="z-index:1;">
+    <blockquote class="font-playfair italic text-center" style="font-size:clamp(1.6rem,3.5vw,3rem);color:#1C1A18;line-height:1.5;font-weight:500;">
       The law is not a profession for those who seek comfort. It is a calling for those who seek truth.
     </blockquote>
-    <!-- Gold dash -->
-    <div class="flex items-center justify-center gap-4 mt-8">
-      <div style="width:32px;height:1px;background:var(--gold);"></div>
-      <p class="font-inter font-medium tracking-[0.2em] uppercase text-xs" style="color:var(--gold);">Jonathan Sterling, Founding Partner</p>
-      <div style="width:32px;height:1px;background:var(--gold);"></div>
-    </div>
+  </div>
+
+  <!-- Attribution bottom right -->
+  <div class="absolute bottom-12 right-12 text-right fade-up delay-2" style="z-index:1;">
+    <div style="width:48px;height:1px;background:var(--gold);margin-left:auto;margin-bottom:0.75rem;"></div>
+    <p class="font-inter font-medium tracking-[0.2em] uppercase text-xs" style="color:#8A6B1A;">Jonathan Sterling</p>
+    <p class="font-inter text-xs mt-0.5" style="color:#9A7A2A;letter-spacing:0.1em;">Founding Partner</p>
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 6 — TEAM
+     TEAM — ASYMMETRIC EDITORIAL
 ═══════════════════════════════════════════════ -->
-<section id="team" style="background:var(--bg-secondary);padding:6rem 1.5rem;">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16">
+<section id="team" style="background:var(--bg-secondary);padding:6rem 2rem;">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="text-center mb-14">
       <span class="section-label fade-up">Our Attorneys</span>
       <h2 class="font-playfair text-white fade-up delay-1" style="font-size:clamp(2rem,4vw,3rem);font-weight:700;">
         The Minds Behind Sterling
@@ -297,58 +343,52 @@ import '../styles/global.css';
       <span class="gold-underline fade-up delay-1"></span>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="flex flex-col lg:flex-row gap-0" style="border:1px solid var(--border-subtle);">
 
-      <!-- Attorney 1 -->
-      <div class="team-card fade-up delay-1">
-        <div class="mx-auto mb-6 flex items-center justify-center" style="width:88px;height:88px;border:1px solid var(--gold);border-radius:0;background:#0F0F0F;">
-          <span class="font-playfair text-2xl font-semibold" style="color:var(--gold);">JS</span>
+      <!-- Left: Senior Partner dominant -->
+      <div class="flex-1 lg:w-1/2 flex flex-col items-center justify-center p-10 lg:p-16 fade-up delay-1" style="border-right:1px solid rgba(201,151,43,0.3);border-bottom:1px solid var(--border-subtle);">
+        <!-- Large portrait placeholder -->
+        <div class="flex items-center justify-center mb-8" style="width:140px;height:140px;border:1px solid var(--gold);background:#0F0F0F;">
+          <span class="font-playfair text-4xl font-semibold" style="color:var(--gold);">JS</span>
         </div>
-        <h3 class="font-playfair text-white text-xl font-semibold mb-1">Jonathan Sterling</h3>
+        <!-- Massive name -->
+        <h3 class="font-playfair text-white text-center font-bold mb-3" style="font-size:clamp(2.2rem,4vw,4rem);line-height:1.1;">
+          Jonathan<br/>Sterling
+        </h3>
         <p class="font-inter text-xs tracking-widest uppercase mb-3" style="color:var(--gold);">Senior Partner — 37 Years</p>
-        <p class="font-inter text-xs" style="color:#666;">Corporate Law · Dispute Resolution</p>
+        <p class="font-inter text-xs" style="color:#555;">Corporate Law · Dispute Resolution</p>
+        <div style="width:48px;height:1px;background:var(--gold);margin-top:1.5rem;opacity:0.5;"></div>
       </div>
 
-      <!-- Attorney 2 -->
-      <div class="team-card fade-up delay-2">
-        <div class="mx-auto mb-6 flex items-center justify-center" style="width:88px;height:88px;border:1px solid var(--gold);border-radius:0;background:#0F0F0F;">
-          <span class="font-playfair text-2xl font-semibold" style="color:var(--gold);">MC</span>
-        </div>
-        <h3 class="font-playfair text-white text-xl font-semibold mb-1">Margaret Chen</h3>
-        <p class="font-inter text-xs tracking-widest uppercase mb-3" style="color:var(--gold);">Partner — 18 Years</p>
-        <p class="font-inter text-xs" style="color:#666;">Property Law · Conveyancing</p>
+      <!-- Right: Three associates stacked -->
+      <div class="flex-1 lg:w-1/2 flex flex-col">
+        {[
+          { initials:'MC', name:'Margaret Chen',    title:'Partner — 18 Years',    spec:'Property Law · Conveyancing' },
+          { initials:'DR', name:'David Rasmussen',  title:'Partner — 12 Years',    spec:'Employment Law · Labour Relations' },
+          { initials:'NP', name:'Naledi Phiri',     title:'Associate — 6 Years',   spec:'Tax Law · Estate Planning' },
+        ].map((a, i) => (
+          <div class={`flex items-center gap-6 p-8 fade-up delay-${i+2}`} style={i < 2 ? 'border-bottom:1px solid var(--border-subtle);' : ''}>
+            <div class="flex items-center justify-center shrink-0" style="width:64px;height:64px;border:1px solid rgba(201,151,43,0.45);background:#0F0F0F;">
+              <span class="font-playfair text-xl font-semibold" style="color:var(--gold);">{a.initials}</span>
+            </div>
+            <div>
+              <h4 class="font-playfair text-white text-xl font-semibold mb-1">{a.name}</h4>
+              <p class="font-inter text-xs tracking-widest uppercase mb-1" style="color:var(--gold);">{a.title}</p>
+              <p class="font-inter text-xs" style="color:#555;">{a.spec}</p>
+            </div>
+          </div>
+        ))}
       </div>
-
-      <!-- Attorney 3 -->
-      <div class="team-card fade-up delay-3">
-        <div class="mx-auto mb-6 flex items-center justify-center" style="width:88px;height:88px;border:1px solid var(--gold);border-radius:0;background:#0F0F0F;">
-          <span class="font-playfair text-2xl font-semibold" style="color:var(--gold);">DR</span>
-        </div>
-        <h3 class="font-playfair text-white text-xl font-semibold mb-1">David Rasmussen</h3>
-        <p class="font-inter text-xs tracking-widest uppercase mb-3" style="color:var(--gold);">Partner — 12 Years</p>
-        <p class="font-inter text-xs" style="color:#666;">Employment Law · Labour Relations</p>
-      </div>
-
-      <!-- Attorney 4 -->
-      <div class="team-card fade-up delay-4">
-        <div class="mx-auto mb-6 flex items-center justify-center" style="width:88px;height:88px;border:1px solid var(--gold);border-radius:0;background:#0F0F0F;">
-          <span class="font-playfair text-2xl font-semibold" style="color:var(--gold);">NP</span>
-        </div>
-        <h3 class="font-playfair text-white text-xl font-semibold mb-1">Naledi Phiri</h3>
-        <p class="font-inter text-xs tracking-widest uppercase mb-3" style="color:var(--gold);">Associate — 6 Years</p>
-        <p class="font-inter text-xs" style="color:#666;">Tax Law · Estate Planning</p>
-      </div>
-
     </div>
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 7 — RESULTS
+     RESULTS — OVERSIZED TYPOGRAPHIC
 ═══════════════════════════════════════════════ -->
-<section id="results" style="background:var(--bg-primary);padding:6rem 1.5rem;">
-  <div class="max-w-7xl mx-auto">
+<section id="results" style="background:var(--bg-primary);padding:6rem 2rem;">
+  <div class="max-w-screen-xl mx-auto">
     <div class="text-center mb-16">
       <span class="section-label fade-up">Track Record</span>
       <h2 class="font-playfair text-white fade-up delay-1" style="font-size:clamp(2rem,4vw,3rem);font-weight:700;">
@@ -357,49 +397,68 @@ import '../styles/global.css';
       <span class="gold-underline fade-up delay-1"></span>
     </div>
 
-    <!-- Stats row -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-      <div class="text-center fade-up delay-1">
-        <div class="font-playfair font-bold counter" data-target="1200" data-suffix="+" style="font-size:clamp(3rem,5vw,4.5rem);color:var(--gold);line-height:1;">0</div>
-        <div class="font-inter text-sm font-medium text-white mt-2 tracking-wide">Cases Handled</div>
-        <div class="font-inter text-xs mt-1" style="color:#555;">Across all practice areas</div>
+    <!-- Oversized numbers with alternating alignment and center vertical rule -->
+    <div class="relative" style="border-left:none;">
+      <!-- Vertical center gold line -->
+      <div aria-hidden="true" style="
+        position:absolute;top:0;bottom:0;left:50%;
+        width:1px;
+        background:linear-gradient(to bottom,transparent,rgba(201,151,43,0.25),transparent);
+        pointer-events:none;
+      "></div>
+
+      <!-- 1,200+ left aligned -->
+      <div class="fade-up delay-1 pb-2" style="border-bottom:1px solid var(--border-subtle);padding-top:0.5rem;">
+        <div class="font-playfair font-bold" style="font-size:clamp(5rem,15vw,9rem);color:var(--gold);line-height:0.9;text-align:left;">
+          <span class="counter" data-target="1200" data-suffix="+">0+</span>
+        </div>
+        <div class="font-inter text-xs tracking-[0.3em] uppercase pb-4" style="color:#666;text-align:left;margin-top:0.5rem;">Cases Handled — Across All Practice Areas</div>
       </div>
-      <div class="text-center fade-up delay-2">
-        <div class="font-playfair font-bold counter" data-target="98" data-suffix="%" style="font-size:clamp(3rem,5vw,4.5rem);color:var(--gold);line-height:1;">0</div>
-        <div class="font-inter text-sm font-medium text-white mt-2 tracking-wide">Success Rate</div>
-        <div class="font-inter text-xs mt-1" style="color:#555;">In contested litigation</div>
+
+      <!-- 98% right aligned -->
+      <div class="fade-up delay-2 pb-2" style="border-bottom:1px solid var(--border-subtle);padding-top:1rem;">
+        <div class="font-playfair font-bold" style="font-size:clamp(5rem,15vw,9rem);color:var(--gold);line-height:0.9;text-align:right;">
+          <span class="counter" data-target="98" data-suffix="%">0%</span>
+        </div>
+        <div class="font-inter text-xs tracking-[0.3em] uppercase pb-4" style="color:#666;text-align:right;margin-top:0.5rem;">Success Rate — In Contested Litigation</div>
       </div>
-      <div class="text-center fade-up delay-3">
-        <div class="font-playfair font-bold" style="font-size:clamp(3rem,5vw,4.5rem);color:var(--gold);line-height:1;">R12B+</div>
-        <div class="font-inter text-sm font-medium text-white mt-2 tracking-wide">Assets Protected</div>
-        <div class="font-inter text-xs mt-1" style="color:#555;">For our clients</div>
+
+      <!-- R12B+ left aligned -->
+      <div class="fade-up delay-3 pb-2" style="border-bottom:1px solid var(--border-subtle);padding-top:1rem;">
+        <div class="font-playfair font-bold" style="font-size:clamp(5rem,15vw,9rem);color:var(--gold);line-height:0.9;text-align:left;">
+          R12B+
+        </div>
+        <div class="font-inter text-xs tracking-[0.3em] uppercase pb-4" style="color:#666;text-align:left;margin-top:0.5rem;">Assets Protected — For Our Clients</div>
       </div>
-      <div class="text-center fade-up delay-4">
-        <div class="font-playfair font-bold counter" data-target="37" style="font-size:clamp(3rem,5vw,4.5rem);color:var(--gold);line-height:1;">0</div>
-        <div class="font-inter text-sm font-medium text-white mt-2 tracking-wide">Years of Excellence</div>
-        <div class="font-inter text-xs mt-1" style="color:#555;">Serving Johannesburg</div>
+
+      <!-- 37 Years right aligned -->
+      <div class="fade-up delay-4 pb-2" style="padding-top:1rem;">
+        <div class="font-playfair font-bold" style="font-size:clamp(5rem,15vw,9rem);color:var(--gold);line-height:0.9;text-align:right;">
+          <span class="counter" data-target="37" data-suffix="">0</span> <span style="font-size:clamp(2rem,5vw,4rem);">Years</span>
+        </div>
+        <div class="font-inter text-xs tracking-[0.3em] uppercase pb-4" style="color:#666;text-align:right;margin-top:0.5rem;">Years of Excellence — Serving Johannesburg</div>
       </div>
     </div>
 
     <!-- Gold rule -->
-    <div class="mb-14 fade-up"><hr class="gold-rule" /></div>
+    <div class="my-14 fade-up"><hr class="gold-rule" /></div>
 
-    <!-- Testimonials -->
+    <!-- Testimonials horizontal three-col -->
     <div class="grid md:grid-cols-3 gap-8">
-      <div class="testimonial-item fade-up delay-1">
-        <blockquote class="font-playfair italic text-base leading-relaxed mb-4" style="color:#AAAAAA;font-size:0.95rem;">
+      <div class="fade-up delay-1" style="border-top:1px solid var(--gold);padding-top:1.5rem;">
+        <blockquote class="font-playfair italic leading-relaxed mb-4" style="color:#AAAAAA;font-size:0.95rem;">
           &ldquo;Sterling &amp; Associates protected our company through the most complex acquisition of our history. Flawless.&rdquo;
         </blockquote>
         <cite class="font-inter text-xs tracking-widest uppercase not-italic" style="color:var(--gold);">— CEO, JSE-Listed Retail Group</cite>
       </div>
-      <div class="testimonial-item fade-up delay-2">
-        <blockquote class="font-playfair italic text-base leading-relaxed mb-4" style="color:#AAAAAA;font-size:0.95rem;">
+      <div class="fade-up delay-2" style="border-top:1px solid var(--gold);padding-top:1.5rem;">
+        <blockquote class="font-playfair italic leading-relaxed mb-4" style="color:#AAAAAA;font-size:0.95rem;">
           &ldquo;Jonathan Sterling is the finest commercial litigator in Johannesburg. Full stop.&rdquo;
         </blockquote>
         <cite class="font-inter text-xs tracking-widest uppercase not-italic" style="color:var(--gold);">— Managing Director, Sandton Property Group</cite>
       </div>
-      <div class="testimonial-item fade-up delay-3">
-        <blockquote class="font-playfair italic text-base leading-relaxed mb-4" style="color:#AAAAAA;font-size:0.95rem;">
+      <div class="fade-up delay-3" style="border-top:1px solid var(--gold);padding-top:1.5rem;">
+        <blockquote class="font-playfair italic leading-relaxed mb-4" style="color:#AAAAAA;font-size:0.95rem;">
           &ldquo;Discreet, precise and devastatingly effective. Exactly what you want in a law firm.&rdquo;
         </blockquote>
         <cite class="font-inter text-xs tracking-widest uppercase not-italic" style="color:var(--gold);">— Private Client, Johannesburg</cite>
@@ -410,169 +469,161 @@ import '../styles/global.css';
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 8 — CONSULTATION CTA
+     CONSULTATION CTA — SPLIT LAYOUT
 ═══════════════════════════════════════════════ -->
-<section class="marble-bg" style="padding:7rem 1.5rem;">
-  <div class="max-w-2xl mx-auto text-center fade-up">
+<section class="flex flex-col lg:flex-row min-h-[55vh]">
+  <!-- Left: marble text -->
+  <div class="marble-bg flex-1 flex flex-col justify-center px-10 lg:px-20 py-16 fade-up" style="position:relative;">
     <span class="section-label" style="color:#8A6B1A;">Begin</span>
-    <h2 class="font-playfair font-bold mt-4 mb-2" style="font-size:clamp(2rem,4vw,2.8rem);color:#1C1A18;line-height:1.2;">
-      Request a Confidential Consultation
+    <h2 class="font-playfair font-bold mt-4 mb-3" style="font-size:clamp(2rem,3.5vw,2.8rem);color:#1C1A18;line-height:1.2;">
+      Request a Confidential<br/>Consultation
     </h2>
-    <span class="gold-underline" style="margin:14px auto 0;background:var(--gold);"></span>
-    <p class="font-inter mt-8 mb-10 leading-relaxed" style="color:#4A4540;font-size:0.95rem;font-weight:300;">
+    <span class="gold-underline" style="margin-left:0;background:var(--gold);margin-bottom:1.5rem;"></span>
+    <p class="font-inter mt-4 leading-relaxed" style="color:#4A4540;font-size:0.9rem;font-weight:300;max-width:400px;">
       Sterling &amp; Associates accepts a limited number of new clients each year. We invite you to discuss your matter with us in complete confidence.
     </p>
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="tel:0117840500" class="btn-gold">011 784 0500</a>
-      <a href="mailto:info@sterlinglaw.co.za" class="btn-outline" style="color:#1C1A18;border-color:#8A6B1A;">info@sterlinglaw.co.za</a>
+    <!-- vertical gold divider on desktop -->
+    <div style="position:absolute;top:10%;right:0;bottom:10%;width:1px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);opacity:0.5;" class="hidden lg:block"></div>
+  </div>
+
+  <!-- Right: black with large phone -->
+  <div class="flex-1 flex flex-col items-center justify-center py-16 px-10 fade-up delay-2" style="background:#050505;">
+    <div class="text-center">
+      <p class="font-inter text-xs tracking-widest uppercase mb-4" style="color:#555;">Direct Line</p>
+      <a href="tel:0117840500" class="font-playfair font-bold block mb-2 hover:text-yellow-400 transition-colors duration-300" style="font-size:clamp(2rem,4vw,3rem);color:var(--gold);text-decoration:none;line-height:1.1;">
+        011 784 0500
+      </a>
+      <div style="width:40px;height:1px;background:var(--gold);margin:1.5rem auto;opacity:0.5;"></div>
+      <a href="mailto:info@sterlinglaw.co.za" class="font-inter font-medium tracking-wide hover:text-yellow-400 transition-colors duration-300" style="color:#888;font-size:0.85rem;text-decoration:none;">
+        info@sterlinglaw.co.za
+      </a>
     </div>
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 9 — CONTACT
+     CONTACT — HORIZONTAL DETAILS + FULL FORM
 ═══════════════════════════════════════════════ -->
-<section id="contact" style="background:var(--bg-primary);padding:6rem 1.5rem;">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+<section id="contact" style="background:var(--bg-primary);padding:6rem 2rem;">
+  <div class="max-w-screen-xl mx-auto">
+    <span class="section-label fade-up">Contact</span>
+    <h2 class="font-playfair text-white fade-up delay-1" style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:0.5rem;margin-top:0.5rem;">
+      Reach Sterling &amp; Associates
+    </h2>
+    <span class="gold-underline fade-up delay-1" style="margin-left:0;margin-bottom:3rem;"></span>
 
-      <!-- Left: Info -->
-      <div>
-        <span class="section-label fade-up">Contact</span>
-        <h2 class="font-playfair text-white fade-up delay-1" style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:0.5rem;">
-          Reach Sterling &amp; Associates
-        </h2>
-        <span class="gold-underline fade-up delay-1" style="margin-left:0;"></span>
-
-        <div class="mt-10 space-y-6 fade-up delay-2">
-          <!-- Address -->
-          <div class="flex gap-4 items-start" style="border-left:1px solid var(--gold);padding-left:1.25rem;">
-            <div>
-              <p class="font-inter text-xs tracking-widest uppercase mb-2" style="color:var(--gold);">Address</p>
-              <p class="font-inter text-sm leading-relaxed" style="color:#BBBBBB;font-weight:300;">
-                14th Floor, The Leonardo<br/>
-                75 Maude Street, Sandton<br/>
-                Johannesburg, 2196
-              </p>
-            </div>
-          </div>
-          <!-- Phone -->
-          <div class="flex gap-4 items-start" style="border-left:1px solid var(--gold);padding-left:1.25rem;">
-            <div>
-              <p class="font-inter text-xs tracking-widest uppercase mb-2" style="color:var(--gold);">Telephone</p>
-              <a href="tel:0117840500" class="font-inter text-sm" style="color:#BBBBBB;font-weight:300;text-decoration:none;">011 784 0500</a>
-            </div>
-          </div>
-          <!-- Email -->
-          <div class="flex gap-4 items-start" style="border-left:1px solid var(--gold);padding-left:1.25rem;">
-            <div>
-              <p class="font-inter text-xs tracking-widest uppercase mb-2" style="color:var(--gold);">Electronic Mail</p>
-              <a href="mailto:info@sterlinglaw.co.za" class="font-inter text-sm" style="color:#BBBBBB;font-weight:300;text-decoration:none;">info@sterlinglaw.co.za</a>
-            </div>
-          </div>
-          <!-- Hours -->
-          <div class="flex gap-4 items-start" style="border-left:1px solid var(--gold);padding-left:1.25rem;">
-            <div>
-              <p class="font-inter text-xs tracking-widest uppercase mb-2" style="color:var(--gold);">Office Hours</p>
-              <p class="font-inter text-sm leading-relaxed" style="color:#BBBBBB;font-weight:300;">
-                Monday to Friday: 08:00 — 17:00<br/>
-                Appointments outside hours by arrangement
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-10 fade-up delay-3">
-          <hr class="gold-rule mb-6" />
-          <p class="font-inter italic text-xs leading-relaxed" style="color:#555;font-weight:300;">
-            All consultations are strictly confidential. Sterling &amp; Associates is regulated by the Legal Practice Council of South Africa.
-          </p>
-        </div>
+    <!-- Four column contact details -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-0 mb-14 fade-up delay-2" style="border:1px solid var(--border-subtle);">
+      <div style="padding:2rem 1.5rem;border-right:1px solid var(--border-subtle);">
+        <p class="font-inter text-xs tracking-widest uppercase mb-3" style="color:var(--gold);">Address</p>
+        <p class="font-inter text-sm leading-relaxed" style="color:#BBBBBB;font-weight:300;">
+          14th Floor, The Leonardo<br/>75 Maude Street, Sandton<br/>Johannesburg, 2196
+        </p>
       </div>
-
-      <!-- Right: Form -->
-      <div class="fade-up delay-2">
-        <form id="contact-form" class="space-y-4" novalidate>
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Full Name *</label>
-              <input type="text" name="name" required placeholder="Your full name" class="form-input" />
-            </div>
-            <div>
-              <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Company</label>
-              <input type="text" name="company" placeholder="Company name (optional)" class="form-input" />
-            </div>
-          </div>
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Email Address *</label>
-              <input type="email" name="email" required placeholder="you@company.com" class="form-input" />
-            </div>
-            <div>
-              <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Phone Number</label>
-              <input type="tel" name="phone" placeholder="+27 11 000 0000" class="form-input" />
-            </div>
-          </div>
-          <div>
-            <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Practice Area</label>
-            <select name="area" class="form-input">
-              <option value="">Select a practice area</option>
-              <option>Corporate &amp; Commercial Law</option>
-              <option>Dispute Resolution &amp; Litigation</option>
-              <option>Property &amp; Conveyancing</option>
-              <option>Employment &amp; Labour Law</option>
-              <option>Estate Planning &amp; Trusts</option>
-              <option>Tax Law &amp; Advisory</option>
-            </select>
-          </div>
-          <div>
-            <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Matter Description *</label>
-            <textarea name="matter" rows="4" required placeholder="Briefly describe your legal matter..." class="form-input" style="resize:vertical;min-height:120px;"></textarea>
-          </div>
-          <div>
-            <label class="font-inter text-xs tracking-widest uppercase block mb-3" style="color:#666;">Preferred Contact Method</label>
-            <div class="flex gap-6">
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="contact_method" value="phone" class="accent-yellow-600" />
-                <span class="font-inter text-sm" style="color:#BBBBBB;">Phone</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="contact_method" value="email" checked class="accent-yellow-600" />
-                <span class="font-inter text-sm" style="color:#BBBBBB;">Email</span>
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn-gold w-full text-center" style="padding:1.1rem;font-size:0.65rem;letter-spacing:0.22em;width:100%;">
-            Submit Enquiry
-          </button>
-          <p id="form-success" class="font-inter text-sm text-center hidden" style="color:var(--gold);">
-            Thank you. We will be in touch shortly.
-          </p>
-        </form>
+      <div style="padding:2rem 1.5rem;border-right:1px solid var(--border-subtle);">
+        <p class="font-inter text-xs tracking-widest uppercase mb-3" style="color:var(--gold);">Telephone</p>
+        <a href="tel:0117840500" class="font-inter text-sm hover:text-yellow-400 transition-colors duration-300" style="color:#BBBBBB;font-weight:300;text-decoration:none;display:block;">011 784 0500</a>
       </div>
-
+      <div style="padding:2rem 1.5rem;border-right:1px solid var(--border-subtle);">
+        <p class="font-inter text-xs tracking-widest uppercase mb-3" style="color:var(--gold);">Electronic Mail</p>
+        <a href="mailto:info@sterlinglaw.co.za" class="font-inter text-sm hover:text-yellow-400 transition-colors duration-300" style="color:#BBBBBB;font-weight:300;text-decoration:none;display:block;">info@sterlinglaw.co.za</a>
+      </div>
+      <div style="padding:2rem 1.5rem;">
+        <p class="font-inter text-xs tracking-widest uppercase mb-3" style="color:var(--gold);">Office Hours</p>
+        <p class="font-inter text-sm leading-relaxed" style="color:#BBBBBB;font-weight:300;">
+          Mon–Fri: 08:00 — 17:00<br/>Outside hours by arrangement
+        </p>
+      </div>
     </div>
+
+    <!-- Full-width form -->
+    <form id="contact-form" class="fade-up delay-3" novalidate>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+        <div>
+          <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Full Name *</label>
+          <input type="text" name="name" required placeholder="Your full name" class="form-input" />
+        </div>
+        <div>
+          <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Company</label>
+          <input type="text" name="company" placeholder="Company (optional)" class="form-input" />
+        </div>
+        <div>
+          <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Email Address *</label>
+          <input type="email" name="email" required placeholder="you@company.com" class="form-input" />
+        </div>
+        <div>
+          <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Phone Number</label>
+          <input type="tel" name="phone" placeholder="+27 11 000 0000" class="form-input" />
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Practice Area</label>
+          <select name="area" class="form-input">
+            <option value="">Select a practice area</option>
+            <option>Corporate &amp; Commercial Law</option>
+            <option>Dispute Resolution &amp; Litigation</option>
+            <option>Property &amp; Conveyancing</option>
+            <option>Employment &amp; Labour Law</option>
+            <option>Estate Planning &amp; Trusts</option>
+            <option>Tax Law &amp; Advisory</option>
+          </select>
+        </div>
+        <div>
+          <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Preferred Contact</label>
+          <div class="flex gap-6 h-[calc(2.75rem)]" style="align-items:center;">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="contact_method" value="phone" class="accent-yellow-600" />
+              <span class="font-inter text-sm" style="color:#BBBBBB;">Phone</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="contact_method" value="email" checked class="accent-yellow-600" />
+              <span class="font-inter text-sm" style="color:#BBBBBB;">Email</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="font-inter text-xs tracking-widest uppercase block mb-2" style="color:#666;">Matter Description *</label>
+        <textarea name="matter" rows="4" required placeholder="Briefly describe your legal matter..." class="form-input" style="resize:vertical;min-height:120px;"></textarea>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 items-start">
+        <button type="submit" class="btn-gold" style="padding:1.1rem 3rem;font-size:0.65rem;">Submit Enquiry</button>
+        <p id="form-success" class="font-inter text-sm hidden" style="color:var(--gold);padding-top:1.1rem;">
+          Thank you. We will be in touch shortly.
+        </p>
+      </div>
+      <p class="font-inter italic text-xs mt-6" style="color:#444;font-weight:300;">
+        All consultations are strictly confidential. Sterling &amp; Associates is regulated by the Legal Practice Council of South Africa.
+      </p>
+    </form>
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════
-     FOOTER
+     FOOTER — GOLD BAND + THREE COLUMN
 ═══════════════════════════════════════════════ -->
-<footer style="background:#050505;border-top:1px solid var(--gold);padding:4rem 1.5rem 2rem;">
-  <div class="max-w-7xl mx-auto">
+
+<!-- Dramatic gold name band -->
+<div style="background:var(--gold);padding:2.5rem 1rem;overflow:hidden;">
+  <div class="text-center">
+    <p class="font-playfair font-bold text-black" style="font-size:clamp(2.5rem,8vw,5.5rem);letter-spacing:0.15em;line-height:1;white-space:nowrap;">
+      STERLING &amp; ASSOCIATES
+    </p>
+  </div>
+</div>
+
+<footer style="background:#050505;padding:4rem 2rem 2rem;">
+  <div class="max-w-screen-xl mx-auto">
     <div class="grid md:grid-cols-3 gap-12 pb-10" style="border-bottom:1px solid var(--border-subtle);">
-
-      <!-- Col 1 -->
       <div>
         <div class="font-playfair font-bold text-3xl mb-1 tracking-wider" style="color:var(--gold);">STERLING</div>
         <div class="font-inter text-xs tracking-[0.3em] uppercase text-white mb-3">& Associates</div>
-        <p class="font-inter text-xs italic mb-2" style="color:#555;">Established 1987</p>
+        <p class="font-inter text-xs italic mb-1" style="color:#555;">Established 1987</p>
         <p class="font-inter text-xs italic" style="color:#555;">Excellence. Integrity. Results.</p>
       </div>
-
-      <!-- Col 2 -->
       <div>
         <p class="font-inter text-xs tracking-widest uppercase mb-5" style="color:var(--gold);">Practice Areas</p>
         <ul class="space-y-2.5">
@@ -583,8 +634,6 @@ import '../styles/global.css';
           ))}
         </ul>
       </div>
-
-      <!-- Col 3 -->
       <div>
         <p class="font-inter text-xs tracking-widest uppercase mb-5" style="color:var(--gold);">Johannesburg</p>
         <div class="space-y-2 font-inter text-sm" style="color:#888;font-weight:300;line-height:1.8;">
@@ -594,10 +643,7 @@ import '../styles/global.css';
           <p class="text-xs mt-3" style="color:#555;">Regulated by the Legal Practice Council of South Africa</p>
         </div>
       </div>
-
     </div>
-
-    <!-- Bottom bar -->
     <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
       <p class="font-inter text-xs text-center sm:text-left" style="color:#444;">
         &copy; 2026 Sterling &amp; Associates Attorneys. All rights reserved. Johannesburg, South Africa.
@@ -617,154 +663,121 @@ import '../styles/global.css';
 // ── Nav scroll ──────────────────────────────────
 const nav = document.getElementById('main-nav')!;
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 60) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
+  nav.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
 // ── Mobile menu ─────────────────────────────────
 const menuToggle = document.getElementById('menu-toggle')!;
-const menuClose = document.getElementById('menu-close')!;
+const menuClose  = document.getElementById('menu-close')!;
 const mobileMenu = document.getElementById('mobile-menu')!;
-const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav-link, .btn-gold');
-
-function openMenu() {
-  mobileMenu.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeMenu() {
-  mobileMenu.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-menuToggle.addEventListener('click', openMenu);
+const closeMenu  = () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; };
+menuToggle.addEventListener('click', () => { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
 menuClose.addEventListener('click', closeMenu);
-mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+mobileMenu.querySelectorAll('.mobile-nav-link, .btn-gold').forEach(el => el.addEventListener('click', closeMenu));
 
-// ── Fade up on scroll ───────────────────────────
-const fadeEls = document.querySelectorAll<HTMLElement>('.fade-up');
-const fadeObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Trigger gold underline
-        const underline = entry.target.querySelector?.('.gold-underline') as HTMLElement | null;
-        if (underline) underline.classList.add('animated');
-      }
-    });
-  },
-  { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
-);
-fadeEls.forEach(el => fadeObserver.observe(el));
+// ── Fade-up observer ─────────────────────────────
+const fadeObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
 
-// Gold underline animate in on section enter
-const underlines = document.querySelectorAll<HTMLElement>('.gold-underline');
-const underlineObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        (entry.target as HTMLElement).classList.add('animated');
-      }
-    });
-  },
-  { threshold: 0.5 }
-);
-underlines.forEach(el => underlineObserver.observe(el));
+// ── Gold underline animate ────────────────────────
+const ulObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) (e.target as HTMLElement).classList.add('animated'); });
+}, { threshold: 0.5 });
+document.querySelectorAll('.gold-underline').forEach(el => ulObs.observe(el));
 
 // ── Counter animation ────────────────────────────
-function animateCounter(el: HTMLElement, target: number, suffix: string = '', duration: number = 1800) {
-  let start = 0;
-  const startTime = performance.now();
-  function update(now: number) {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.round(eased * target);
-    el.textContent = (current >= 1000 ? current.toLocaleString() : String(current)) + suffix;
-    if (progress < 1) requestAnimationFrame(update);
-    else el.textContent = (target >= 1000 ? target.toLocaleString() : String(target)) + suffix;
-  }
-  requestAnimationFrame(update);
+function animateCounter(el: HTMLElement, target: number, suffix: string, duration = 1800) {
+  const t0 = performance.now();
+  const tick = (now: number) => {
+    const p = Math.min((now - t0) / duration, 1);
+    const v = Math.round((1 - Math.pow(1 - p, 3)) * target);
+    el.textContent = (v >= 1000 ? v.toLocaleString() : String(v)) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
 }
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target as HTMLElement;
+      animateCounter(el, +(el.dataset.target||0), el.dataset.suffix||'');
+      cntObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.6 });
+document.querySelectorAll<HTMLElement>('.counter').forEach(el => cntObs.observe(el));
 
-const counterObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target as HTMLElement;
-        const target = parseInt(el.dataset.target || '0', 10);
-        const suffix = el.dataset.suffix || '';
-        animateCounter(el, target, suffix);
-        counterObserver.unobserve(el);
-      }
+// ── Accordion ────────────────────────────────────
+document.querySelectorAll<HTMLElement>('.accordion-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const item = trigger.closest<HTMLElement>('.accordion-item')!;
+    const body = item.querySelector<HTMLElement>('.accordion-body')!;
+    const icon = trigger.querySelector<HTMLElement>('.accordion-icon')!;
+    const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+    // Close all
+    document.querySelectorAll<HTMLElement>('.accordion-item').forEach(i => {
+      const b = i.querySelector<HTMLElement>('.accordion-body')!;
+      const ic = i.querySelector<HTMLElement>('.accordion-icon')!;
+      const t = i.querySelector<HTMLElement>('.accordion-trigger')!;
+      b.style.maxHeight = '0';
+      ic.textContent = '+';
+      ic.style.transform = 'rotate(0deg)';
+      t.setAttribute('aria-expanded','false');
     });
-  },
-  { threshold: 0.6 }
-);
-document.querySelectorAll<HTMLElement>('.counter').forEach(el => counterObserver.observe(el));
+    if (!isOpen) {
+      body.style.maxHeight = body.scrollHeight + 'px';
+      icon.textContent = '−';
+      icon.style.transform = 'rotate(0deg)';
+      trigger.setAttribute('aria-expanded','true');
+    }
+  });
+});
 
 // ── Gold particles ───────────────────────────────
 const canvas = document.getElementById('particle-canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d')!;
-let particles: { x: number; y: number; vx: number; vy: number; r: number; a: number }[] = [];
-
-function resize() {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-}
+type Particle = { x:number; y:number; vx:number; vy:number; r:number; a:number };
+let particles: Particle[] = [];
+const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
 resize();
-window.addEventListener('resize', resize);
-
-function createParticles() {
-  particles = [];
-  const count = Math.floor((canvas.width * canvas.height) / 18000);
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.18,
-      vy: (Math.random() - 0.5) * 0.18,
-      r: Math.random() * 1.2 + 0.4,
-      a: Math.random() * 0.12 + 0.04,
-    });
-  }
+window.addEventListener('resize', () => { resize(); init(); }, { passive: true });
+function init() {
+  const n = Math.floor((canvas.width * canvas.height) / 20000);
+  particles = Array.from({length:n}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random()-.5)*.2,
+    vy: (Math.random()-.5)*.2,
+    r: Math.random()*1.2+.4,
+    a: Math.random()*.1+.04,
+  }));
 }
-createParticles();
-window.addEventListener('resize', createParticles);
-
-function drawParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+init();
+(function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
   particles.forEach(p => {
     ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
     ctx.fillStyle = `rgba(201,151,43,${p.a})`;
     ctx.fill();
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.x < 0) p.x = canvas.width;
-    if (p.x > canvas.width) p.x = 0;
-    if (p.y < 0) p.y = canvas.height;
-    if (p.y > canvas.height) p.y = 0;
+    p.x = (p.x + p.vx + canvas.width) % canvas.width;
+    p.y = (p.y + p.vy + canvas.height) % canvas.height;
   });
-  requestAnimationFrame(drawParticles);
-}
-drawParticles();
+  requestAnimationFrame(draw);
+})();
 
 // ── Contact form ─────────────────────────────────
 const form = document.getElementById('contact-form') as HTMLFormElement;
 const successMsg = document.getElementById('form-success')!;
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', e => {
   e.preventDefault();
   const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
+  btn.textContent = 'Sending...'; btn.disabled = true;
   setTimeout(() => {
     form.reset();
-    btn.textContent = 'Submit Enquiry';
-    btn.disabled = false;
+    btn.textContent = 'Submit Enquiry'; btn.disabled = false;
     successMsg.classList.remove('hidden');
     setTimeout(() => successMsg.classList.add('hidden'), 5000);
   }, 1200);
