@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ─── Custom Properties ─── */
+:root {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
+  --bg-card: #161616;
+  --gold: #C9972B;
+  --gold-light: #E8B84B;
+  --gold-pale: #F5E6C8;
+  --marble-white: #F8F6F0;
+  --text-primary: #FFFFFF;
+  --text-secondary: #AAAAAA;
+  --border-subtle: #2A2A2A;
+}
+
+html { scroll-behavior: smooth; background-color: var(--bg-primary); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  overflow-x: hidden;
+}
+
+.font-playfair { font-family: 'Playfair Display', serif; }
+.font-inter { font-family: 'Inter', sans-serif; }
+
+/* Gold underline accent */
+.gold-underline {
+  display: block;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  margin: 14px auto 0;
+  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.gold-underline.animated { width: 40px; }
+
+/* Section labels */
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Marble texture */
+.marble-bg {
+  background-color: #EFECE5;
+  background-image:
+    linear-gradient(108deg, transparent 22%, rgba(160,155,148,0.07) 22.5%, rgba(160,155,148,0.07) 23.5%, transparent 24%),
+    linear-gradient(162deg, transparent 38%, rgba(145,140,133,0.05) 38.5%, rgba(145,140,133,0.05) 40%, transparent 40.5%),
+    linear-gradient(78deg, transparent 48%, rgba(180,176,170,0.06) 48.5%, rgba(180,176,170,0.06) 49.5%, transparent 50%),
+    linear-gradient(132deg, transparent 58%, rgba(155,150,143,0.04) 58.5%, rgba(155,150,143,0.04) 60%, transparent 60.5%),
+    radial-gradient(ellipse at 25% 35%, rgba(210,206,200,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 65%, rgba(195,191,185,0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(230,227,220,0.22) 0%, transparent 70%);
+}
+
+/* Navigation */
+#main-nav {
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+#main-nav.scrolled {
+  background-color: rgba(12,12,12,0.97);
+  border-bottom: 1px solid rgba(201,151,43,0.6);
+  backdrop-filter: blur(12px);
+}
+
+/* Hero marble overlay */
+.hero-marble-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(108deg, transparent 30%, rgba(255,255,255,0.012) 30.5%, rgba(255,255,255,0.012) 31.5%, transparent 32%),
+    linear-gradient(162deg, transparent 48%, rgba(255,255,255,0.008) 48.5%, rgba(255,255,255,0.008) 50%, transparent 50.5%);
+  pointer-events: none;
+}
+
+/* Fade up */
+.fade-up {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* Practice cards */
+.practice-card {
+  background: var(--bg-card);
+  border-top: 1px solid var(--gold);
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-left: 1px solid transparent;
+  transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  padding: 2.5rem 2rem;
+}
+.practice-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(201,151,43,0.07);
+}
+
+/* Team cards */
+.team-card {
+  border-bottom: 1px solid var(--gold);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.4s ease;
+  background: var(--bg-secondary);
+}
+.team-card:hover { transform: translateY(-3px); }
+
+/* Form inputs */
+.form-input {
+  background: #0D0D0D;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  padding: 0.875rem 1rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.4s ease;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.form-input:focus { border-color: var(--gold); }
+.form-input::placeholder { color: #444; }
+select.form-input option { background: #111; color: #fff; }
+
+/* Buttons */
+.btn-gold {
+  background: var(--gold);
+  color: #000;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 1rem 2.2rem;
+  border: 1px solid var(--gold);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.4s ease, color 0.4s ease;
+  display: inline-block;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-gold:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 1rem 2.2rem;
+  border: 1px solid var(--gold);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.4s ease, color 0.4s ease;
+  display: inline-block;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-outline:hover { background: var(--gold); color: #000; }
+
+/* Mobile menu */
+#mobile-menu {
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+/* Scroll indicator */
+@keyframes bounce-scroll {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+.scroll-indicator { animation: bounce-scroll 2.2s ease-in-out infinite; }
+
+/* Stats divider */
+.stat-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+/* Image frame corner accents */
+.corner-accent::before,
+.corner-accent::after,
+.corner-accent .corner-tl::before,
+.corner-accent .corner-br::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--gold);
+  border-style: solid;
+}
+
+/* Gold rule */
+.gold-rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.4;
+  border: none;
+}
+
+/* Counter numbers */
+.counter { font-family: 'Playfair Display', serif; }
+
+/* Nav link */
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+.nav-link:hover { color: var(--gold); }
+
+/* Testimonials */
+.testimonial-item {
+  border-left: 1px solid var(--gold);
+  padding-left: 1.5rem;
+}
