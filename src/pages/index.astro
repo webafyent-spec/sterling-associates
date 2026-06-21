@@ -393,84 +393,94 @@ import '../styles/global.css';
 <!-- ═══════════════════════════════════════════════
      RESULTS — OVERSIZED TYPOGRAPHIC
 ═══════════════════════════════════════════════ -->
-<section id="results" style="background:var(--bg-primary);padding:6rem 2rem;">
+<!-- ═══════════════════════════════════════════════
+     RESULTS — BENTO GRID + CINEMATIC STATS
+═══════════════════════════════════════════════ -->
+<section id="results" style="background:var(--bg-primary);padding:6rem 2rem 0;">
   <div class="max-w-screen-xl mx-auto">
-    <div class="text-center mb-16">
-      <span class="section-label fade-up">Track Record</span>
-      <h2 class="font-playfair text-white fade-up delay-1" style="font-size:clamp(2rem,4vw,3rem);font-weight:700;">
-        Results That Speak for Themselves
-      </h2>
-      <span class="gold-underline fade-up delay-1"></span>
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-14 gap-4">
+      <div>
+        <span class="section-label fade-up">Track Record</span>
+        <h2 class="font-playfair text-white fade-up delay-1" style="font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.15;margin-top:0.5rem;">
+          Results That Speak<br/>for Themselves
+        </h2>
+        <span class="gold-underline fade-up delay-1" style="margin-left:0;"></span>
+      </div>
+      <p class="font-inter fade-up delay-2" style="color:#555;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;max-width:240px;line-height:1.7;text-align:right;">
+        Johannesburg's most trusted<br/>corporate law practice
+      </p>
+    </div>
+  </div>
+
+  <!-- BENTO GRID — full bleed -->
+  <div class="results-bento">
+
+    <!-- Cell A: 1,200+ large — dark gold tinted -->
+    <div class="bento-cell bento-a fade-up delay-1" style="background:#0E0B05;border:1px solid rgba(201,151,43,0.12);padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;min-height:320px;">
+      <!-- Faint watermark numeral -->
+      <div aria-hidden="true" style="position:absolute;bottom:-0.5rem;right:-1rem;font-family:'Playfair Display',serif;font-size:14rem;font-weight:800;color:rgba(201,151,43,0.06);line-height:1;pointer-events:none;user-select:none;">1,200</div>
+      <div class="font-inter text-xs tracking-widest uppercase mb-4" style="color:rgba(201,151,43,0.5);">Cases Handled</div>
+      <div class="font-playfair font-bold" style="font-size:clamp(4rem,9vw,7.5rem);color:var(--gold);line-height:0.88;letter-spacing:-0.02em;">
+        <span class="counter" data-target="1200" data-suffix="+">0+</span>
+      </div>
+      <div class="font-inter mt-4 text-xs tracking-widest uppercase" style="color:#444;">Across all practice areas</div>
     </div>
 
-    <!-- Oversized numbers with alternating alignment and center vertical rule -->
-    <div class="relative" style="border-left:none;">
-      <!-- Vertical center gold line -->
-      <div aria-hidden="true" style="
-        position:absolute;top:0;bottom:0;left:50%;
-        width:1px;
-        background:linear-gradient(to bottom,transparent,rgba(201,151,43,0.25),transparent);
-        pointer-events:none;
-      "></div>
-
-      <!-- 1,200+ left aligned -->
-      <div class="fade-up delay-1 pb-2" style="border-bottom:1px solid var(--border-subtle);padding-top:0.5rem;">
-        <div class="font-playfair font-bold" style="font-size:clamp(5rem,15vw,9rem);color:var(--gold);line-height:0.9;text-align:left;">
-          <span class="counter" data-target="1200" data-suffix="+">0+</span>
-        </div>
-        <div class="font-inter text-xs tracking-[0.3em] uppercase pb-4" style="color:#666;text-align:left;margin-top:0.5rem;">Cases Handled — Across All Practice Areas</div>
+    <!-- Cell B: 98% — near black -->
+    <div class="bento-cell bento-b fade-up delay-2" style="background:#0A0A0A;border:1px solid rgba(201,151,43,0.12);padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;min-height:320px;">
+      <div aria-hidden="true" style="position:absolute;bottom:-0.5rem;right:-1rem;font-family:'Playfair Display',serif;font-size:14rem;font-weight:800;color:rgba(201,151,43,0.05);line-height:1;pointer-events:none;user-select:none;">98</div>
+      <div class="font-inter text-xs tracking-widest uppercase mb-4" style="color:rgba(201,151,43,0.5);">Success Rate</div>
+      <div class="font-playfair font-bold" style="font-size:clamp(4rem,9vw,7.5rem);color:var(--gold);line-height:0.88;letter-spacing:-0.02em;">
+        <span class="counter" data-target="98" data-suffix="%">0%</span>
       </div>
-
-      <!-- 98% right aligned -->
-      <div class="fade-up delay-2 pb-2" style="border-bottom:1px solid var(--border-subtle);padding-top:1rem;">
-        <div class="font-playfair font-bold" style="font-size:clamp(5rem,15vw,9rem);color:var(--gold);line-height:0.9;text-align:right;">
-          <span class="counter" data-target="98" data-suffix="%">0%</span>
-        </div>
-        <div class="font-inter text-xs tracking-[0.3em] uppercase pb-4" style="color:#666;text-align:right;margin-top:0.5rem;">Success Rate — In Contested Litigation</div>
-      </div>
-
-      <!-- R12B+ left aligned -->
-      <div class="fade-up delay-3 pb-2" style="border-bottom:1px solid var(--border-subtle);padding-top:1rem;">
-        <div class="font-playfair font-bold" style="font-size:clamp(5rem,15vw,9rem);color:var(--gold);line-height:0.9;text-align:left;">
-          R12B+
-        </div>
-        <div class="font-inter text-xs tracking-[0.3em] uppercase pb-4" style="color:#666;text-align:left;margin-top:0.5rem;">Assets Protected — For Our Clients</div>
-      </div>
-
-      <!-- 37 Years right aligned -->
-      <div class="fade-up delay-4 pb-2" style="padding-top:1rem;">
-        <div class="font-playfair font-bold" style="font-size:clamp(5rem,15vw,9rem);color:var(--gold);line-height:0.9;text-align:right;">
-          <span class="counter" data-target="37" data-suffix="">0</span> <span style="font-size:clamp(2rem,5vw,4rem);">Years</span>
-        </div>
-        <div class="font-inter text-xs tracking-[0.3em] uppercase pb-4" style="color:#666;text-align:right;margin-top:0.5rem;">Years of Excellence — Serving Johannesburg</div>
-      </div>
+      <div class="font-inter mt-4 text-xs tracking-widest uppercase" style="color:#444;">In contested litigation</div>
     </div>
 
-    <!-- Gold rule -->
-    <div class="my-14 fade-up"><hr class="gold-rule" /></div>
+    <!-- Cell C: Testimonial feature — marble -->
+    <div class="bento-cell bento-c fade-up delay-3 marble-bg" style="padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:center;position:relative;min-height:320px;">
+      <div class="font-playfair text-5xl font-light mb-5" style="color:var(--gold);opacity:0.45;line-height:1;">&ldquo;</div>
+      <blockquote class="font-playfair italic" style="font-size:clamp(1rem,2vw,1.3rem);color:#2A2520;line-height:1.65;font-weight:500;">
+        Jonathan Sterling is the finest commercial litigator in Johannesburg. Full stop.
+      </blockquote>
+      <div style="width:32px;height:1px;background:#8A6B1A;margin:1.5rem 0 0.75rem;"></div>
+      <cite class="font-inter text-xs tracking-widest uppercase not-italic" style="color:#8A6B1A;">— Managing Director, Sandton Property Group</cite>
+    </div>
 
-    <!-- Testimonials horizontal three-col -->
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="fade-up delay-1" style="border-top:1px solid var(--gold);padding-top:1.5rem;">
-        <blockquote class="font-playfair italic leading-relaxed mb-4" style="color:#AAAAAA;font-size:0.95rem;">
+    <!-- Cell D: R12B+ — charcoal -->
+    <div class="bento-cell bento-d fade-up delay-2" style="background:#0D0D0D;border:1px solid rgba(201,151,43,0.12);padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;min-height:260px;">
+      <div aria-hidden="true" style="position:absolute;bottom:-0.5rem;right:-0.5rem;font-family:'Playfair Display',serif;font-size:11rem;font-weight:800;color:rgba(201,151,43,0.05);line-height:1;pointer-events:none;user-select:none;">12B</div>
+      <div class="font-inter text-xs tracking-widest uppercase mb-3" style="color:rgba(201,151,43,0.5);">Assets Protected</div>
+      <div class="font-playfair font-bold" style="font-size:clamp(3rem,7vw,5.5rem);color:var(--gold);line-height:0.88;letter-spacing:-0.02em;">R12B+</div>
+      <div class="font-inter mt-3 text-xs tracking-widest uppercase" style="color:#444;">For our clients</div>
+    </div>
+
+    <!-- Cell E: 37 Years — dark -->
+    <div class="bento-cell bento-e fade-up delay-3" style="background:#080808;border:1px solid rgba(201,151,43,0.12);padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;min-height:260px;">
+      <div aria-hidden="true" style="position:absolute;bottom:-0.5rem;right:-0.5rem;font-family:'Playfair Display',serif;font-size:11rem;font-weight:800;color:rgba(201,151,43,0.05);line-height:1;pointer-events:none;user-select:none;">37</div>
+      <div class="font-inter text-xs tracking-widest uppercase mb-3" style="color:rgba(201,151,43,0.5);">Years of Excellence</div>
+      <div class="font-playfair font-bold" style="font-size:clamp(3rem,7vw,5.5rem);color:var(--gold);line-height:0.88;letter-spacing:-0.02em;">
+        <span class="counter" data-target="37">0</span><span style="font-size:clamp(1.5rem,3.5vw,2.8rem);"> Yrs</span>
+      </div>
+      <div class="font-inter mt-3 text-xs tracking-widest uppercase" style="color:#444;">Serving Johannesburg</div>
+    </div>
+
+    <!-- Cell F: Two compact testimonials stacked -->
+    <div class="bento-cell bento-f fade-up delay-4" style="background:#111111;border:1px solid rgba(201,151,43,0.12);padding:0;display:flex;flex-direction:column;min-height:260px;">
+      <div style="flex:1;padding:2.5rem 2.5rem 1.5rem;border-bottom:1px solid rgba(201,151,43,0.15);">
+        <blockquote class="font-playfair italic text-sm leading-relaxed mb-3" style="color:#999;">
           &ldquo;Sterling &amp; Associates protected our company through the most complex acquisition of our history. Flawless.&rdquo;
         </blockquote>
         <cite class="font-inter text-xs tracking-widest uppercase not-italic" style="color:var(--gold);">— CEO, JSE-Listed Retail Group</cite>
       </div>
-      <div class="fade-up delay-2" style="border-top:1px solid var(--gold);padding-top:1.5rem;">
-        <blockquote class="font-playfair italic leading-relaxed mb-4" style="color:#AAAAAA;font-size:0.95rem;">
-          &ldquo;Jonathan Sterling is the finest commercial litigator in Johannesburg. Full stop.&rdquo;
-        </blockquote>
-        <cite class="font-inter text-xs tracking-widest uppercase not-italic" style="color:var(--gold);">— Managing Director, Sandton Property Group</cite>
-      </div>
-      <div class="fade-up delay-3" style="border-top:1px solid var(--gold);padding-top:1.5rem;">
-        <blockquote class="font-playfair italic leading-relaxed mb-4" style="color:#AAAAAA;font-size:0.95rem;">
+      <div style="flex:1;padding:1.5rem 2.5rem 2.5rem;">
+        <blockquote class="font-playfair italic text-sm leading-relaxed mb-3" style="color:#999;">
           &ldquo;Discreet, precise and devastatingly effective. Exactly what you want in a law firm.&rdquo;
         </blockquote>
         <cite class="font-inter text-xs tracking-widest uppercase not-italic" style="color:var(--gold);">— Private Client, Johannesburg</cite>
       </div>
     </div>
-  </div>
+
+  </div><!-- /bento -->
 </section>
 
 
@@ -613,9 +623,9 @@ import '../styles/global.css';
 ═══════════════════════════════════════════════ -->
 
 <!-- Dramatic gold name band -->
-<div style="background:var(--gold);padding:2.5rem 1rem;overflow:hidden;">
+<div style="background:var(--gold);padding:2rem 1.5rem;overflow:hidden;">
   <div class="text-center">
-    <p class="font-playfair font-bold text-black" style="font-size:clamp(2.5rem,8vw,5.5rem);letter-spacing:0.15em;line-height:1;white-space:nowrap;">
+    <p class="font-playfair font-bold text-black" style="font-size:clamp(1.6rem,6.5vw,5rem);letter-spacing:clamp(0.02em,0.8vw,0.12em);line-height:1.1;word-break:break-word;">
       STERLING &amp; ASSOCIATES
     </p>
   </div>
